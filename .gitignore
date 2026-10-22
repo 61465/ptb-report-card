@@ -1,0 +1,24 @@
+# Private scan notes (CVD-lite: findings land after 14-day disclosure window)
+/private/
+*.private.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node (if we add test tooling later)
+node_modules/
+dist/
+
+# Python (if we add a CLI later)
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Build artifacts
+*.log

@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  fix-patterns:
+    name: Fix patterns · Vitest · Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Vitest
+        run: npx vitest run --reporter=verbose
+
+  validate-artifacts:
+    name: Validate release artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate ptb-report-card.json
+        run: |
+          python3 -c "import json; d = json.load(open('ptb-report-card.json')); assert len(d['libraries']) == 5, f'expected 5 libraries, got {len(d[\"libraries\"])}'; print('ptb-report-card.json OK')"
+
+      - name: Validate badge.svg is well-formed XML
+        run: |
+          python3 -c "import xml.etree.ElementTree as ET; ET.parse('badge.svg'); print('badge.svg OK')"
+
+      - name: Check for required top-level files
+        run: |
+          set -e
+          for f in methodology.md README.md LICENSE SUCCESS.md CVD_LETTER.md EXCLUSIONS.md badge.svg ptb-report-card.json; do
+            if [ ! -f "$f" ]; then
+              echo "::error ::missing required file: $f"
+              exit 1
+            fi
+            echo "OK: $f"
+          done
+
+      - name: Check for Section 4.0 Prerequisites in methodology
+        run: |
+          grep -q '### 4.0 Prerequisites common to every provider contract' methodology.md
+          grep -q '### 6.2.1 Evaluator duty' methodology.md
+          grep -q 'xms_edov === true' methodology.md
+          grep -q 'email_verified === "true"' methodology.md
+          echo "methodology.md key invariants present"
+
+      - name: Check unsafe/safe/test parity across providers
+        run: |
+          set -e
+          for p in azure apple google github; do
+            for kind in unsafe safe "${p}.test"; do
+              f="ptb-fix-patterns/$p/${kind}.ts"
+              if [ ! -f "$f" ]; then
+                echo "::error ::missing $f"
+                exit 1
+              fi
+            done
+          done
+          echo "unsafe/safe/test parity OK across 4 providers"

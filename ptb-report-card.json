@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$comment": "Empty shell. Populated at the end of the 14-day CVD-lite disclosure window (see CVD_LETTER.md). Shape fixed; data pending.",
+  "methodology": {
+    "name": "PTB Report Card",
+    "version": "v0.1-scope-limited",
+    "methodology_url": "https://github.com/61465/ptb-report-card/blob/main/methodology.md",
+    "pin_date": "2026-10-22"
+  },
+  "providers_in_scope": [
+    "microsoft-azure-entra",
+    "apple-siwa",
+    "google-oidc",
+    "github-oauth"
+  ],
+  "dimensions": [
+    "api_capability",
+    "default_behavior"
+  ],
+  "verdict_values": [
+    "PASS",
+    "FAIL",
+    "N/A",
+    "prerequisite_failure"
+  ],
+  "libraries": [
+    {
+      "name": "openid-client",
+      "ecosystem": "npm",
+      "repo": "https://github.com/panva/node-openid-client",
+      "pinned_sha": null,
+      "scorecard": {
+        "microsoft-azure-entra": { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "apple-siwa":            { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "google-oidc":           { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "github-oauth":          { "api_capability": null, "default_behavior": null, "evidence": [] }
+      }
+    },
+    {
+      "name": "oidc-client-ts",
+      "ecosystem": "npm",
+      "repo": "https://github.com/authts/oidc-client-ts",
+      "pinned_sha": null,
+      "scorecard": {
+        "microsoft-azure-entra": { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "apple-siwa":            { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "google-oidc":           { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "github-oauth":          { "api_capability": null, "default_behavior": null, "evidence": [] }
+      }
+    },
+    {
+      "name": "@azure/msal-node",
+      "ecosystem": "npm",
+      "repo": "https://github.com/AzureAD/microsoft-authentication-library-for-js",
+      "pinned_sha": null,
+      "scorecard": {
+        "microsoft-azure-entra": { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "apple-siwa":            { "api_capability": "N/A", "default_behavior": "N/A", "evidence": ["not advertised"] },
+        "google-oidc":           { "api_capability": "N/A", "default_behavior": "N/A", "evidence": ["not advertised"] },
+        "github-oauth":          { "api_capability": "N/A", "default_behavior": "N/A", "evidence": ["not advertised"] }
+      }
+    },
+    {
+      "name": "coreos/go-oidc",
+      "ecosystem": "go",
+      "repo": "https://github.com/coreos/go-oidc",
+      "pinned_sha": null,
+      "scorecard": {
+        "microsoft-azure-entra": { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "apple-siwa":            { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "google-oidc":           { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "github-oauth":          { "api_capability": null, "default_behavior": null, "evidence": [] }
+      }
+    },
+    {
+      "name": "zitadel/oidc",
+      "ecosystem": "go",
+      "repo": "https://github.com/zitadel/oidc",
+      "pinned_sha": null,
+      "scorecard": {
+        "microsoft-azure-entra": { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "apple-siwa":            { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "google-oidc":           { "api_capability": null, "default_behavior": null, "evidence": [] },
+        "github-oauth":          { "api_capability": null, "default_behavior": null, "evidence": [] }
+      }
+    }
+  ],
+  "excluded_libraries": "see EXCLUSIONS.md",
+  "cvd_window_opens": null,
+  "cvd_window_closes": null
+}
