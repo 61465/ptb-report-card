@@ -173,7 +173,7 @@ Each `(library, provider, dimension)` triple in the report card has:
 
 For each of the four provider families, the `V(p, k)` set is specified below.
 The contracts are drawn from provider documentation and from the four
-accepted GHSAs referenced in Section 7. Contracts for Discord, LinkedIn,
+in-triage GHSAs referenced in Section 7. Contracts for Discord, LinkedIn,
 Twitter/X, and Facebook are supported by `identity-trust-hunt` but are not
 in scope for this report card version.
 
@@ -404,8 +404,8 @@ a conflict of interest. Each exclusion carries a short, public reason:
 | Library | Reason | Public artifact |
 |---|---|---|
 | `@auth/core`, `next-auth` (Auth.js) | advisory in triage | `GHSA-x3fc-mfpw-93f6` |
-| `@teamhanko/*` | advisory accepted | `GHSA-2gvh-5vh3-m2rp` |
-| `@supabase/*` | advisory accepted | `GHSA-ffp4-94w6-vfgv` |
+| `@teamhanko/*` | advisory in triage | `GHSA-2gvh-5vh3-m2rp` |
+| `@supabase/*` | advisory in triage | `GHSA-ffp4-94w6-vfgv` |
 | `@documenso/*` | advisory in triage | `GHSA-hm26-jm32-3wp4` |
 | `casdoor/*` | vendor-channel disclosure open | reported 2026-10-21 |
 | `keycloak/*` | vendor-channel disclosure acknowledged | ack'd 2026-10-21 |
@@ -501,16 +501,21 @@ contracts, the evidence URLs, and the fix patterns.
 
 ## 9. References
 
-### 9.1 Accepted public advisories grounding the methodology
+### 9.1 Public GHSAs in triage, grounding the methodology
+
+All four GHSAs are in GitHub's `triage` state at the time of this
+revision. CVSS 9.8 on the first two is confirmed in the GHSA
+record; the Documenso and Auth.js severity fields are the
+self-reported values from the submission.
 
 - `GHSA-ffp4-94w6-vfgv` — Supabase, Microsoft Azure `xms_edov` miss,
-  CVSS 9.8, accepted 2026-10-14.
+  CVSS 9.8, in triage (filed 2026-10-14).
 - `GHSA-2gvh-5vh3-m2rp` — Hanko, Microsoft Azure `xms_edov` miss,
-  CVSS 9.8, accepted 2026-10-14.
-- `GHSA-hm26-jm32-3wp4` — Documenso, Critical, in triage as of
-  2026-10-21.
+  CVSS 9.8, in triage (filed 2026-10-14).
+- `GHSA-hm26-jm32-3wp4` — Documenso, Critical (self-reported), in
+  triage (filed 2026-10-21).
 - `GHSA-x3fc-mfpw-93f6` — Auth.js, GitHub `primary` vs `verified`
-  ordering, High, in triage as of 2026-10-21.
+  ordering, High (self-reported), in triage (filed 2026-10-21).
 
 ### 9.2 Vendor-email channel advisories
 
@@ -525,7 +530,7 @@ Closest related projects, with the delta against this methodology
 noted inline:
 
 - **`identity-trust-hunt`** — the scanner that discovered the four
-  accepted advisories grounding this methodology; public under MIT at
+  in-triage advisories grounding this methodology; public under MIT at
   `https://github.com/61465/identity-trust-hunt`. Delta: `identity-
   trust-hunt` scans **consumer applications** for PTB-unsafe call
   sites. This methodology scores **consumer libraries** on whether

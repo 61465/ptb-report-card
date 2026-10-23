@@ -35,7 +35,7 @@ new "re-admitted" entry is added rather than mutating the original.
 ### `@teamhanko/*`
 
 - **Reason**: Microsoft Entra `xms_edov` advisory filed by the authors
-  of this methodology; accepted.
+  of this methodology; in triage.
 - **Public artifact**: [`GHSA-2gvh-5vh3-m2rp`](https://github.com/teamhanko/hanko/security/advisories)
 - **Entered scope**: 2026-10-14.
 - **Exit condition**: advisory publishes and the fix lands upstream.
@@ -43,7 +43,7 @@ new "re-admitted" entry is added rather than mutating the original.
 ### `@supabase/*`
 
 - **Reason**: Microsoft Entra `xms_edov` advisory filed by the authors
-  of this methodology; accepted.
+  of this methodology; in triage.
 - **Public artifact**: [`GHSA-ffp4-94w6-vfgv`](https://github.com/supabase/auth/security/advisories)
 - **Entered scope**: 2026-10-14.
 - **Exit condition**: advisory publishes and the fix lands upstream.
